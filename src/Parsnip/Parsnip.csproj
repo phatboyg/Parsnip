@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5CC685B1-F128-4770-BB23-3406A703F13B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Parsnip</RootNamespace>
+    <AssemblyName>Parsnip</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcceptParserVisitor.cs" />
+    <Compile Include="ArrayParserExtensions.cs" />
+    <Compile Include="CharExtensions.cs" />
+    <Compile Include="Cursor.cs" />
+    <Compile Include="CursorExtensions.cs" />
+    <Compile Include="ExceptExtensions.cs" />
+    <Compile Include="Exceptions\ParseException.cs" />
+    <Compile Include="Exceptions\ParsnipException.cs" />
+    <Compile Include="Input.cs" />
+    <Compile Include="Inputs\ArrayCursor.cs" />
+    <Compile Include="Inputs\ArrayInput.cs" />
+    <Compile Include="Inputs\StringCursor.cs" />
+    <Compile Include="Inputs\StringInput.cs" />
+    <Compile Include="LongestExtensions.cs" />
+    <Compile Include="Parsers\AnyParser.cs" />
+    <Compile Include="Parsers\CharArrayParser.cs" />
+    <Compile Include="Parsers\CharParser.cs" />
+    <Compile Include="Parsers\CharToStringParser.cs" />
+    <Compile Include="Parsers\ConstantStringParser.cs" />
+    <Compile Include="Parsers\ExceptParser.cs" />
+    <Compile Include="Parsers\IntegerParser.cs" />
+    <Compile Include="Parsers\LongestParser.cs" />
+    <Compile Include="Parsers\OneParser.cs" />
+    <Compile Include="Parsers\OrParser.cs" />
+    <Compile Include="Parsers\RegexParser.cs" />
+    <Compile Include="Parsers\SelectParser.cs" />
+    <Compile Include="Parsers\SeriesParser.cs" />
+    <Compile Include="Parsers\StringParser.cs" />
+    <Compile Include="Parsers\TakeParser.cs" />
+    <Compile Include="Parsers\ThenParser.cs" />
+    <Compile Include="Parsers\ValueTypeParsers\Int32Parser.cs" />
+    <Compile Include="OrExtensions.cs" />
+    <Compile Include="Parsers\WhereParser.cs" />
+    <Compile Include="ParserVisitor.cs" />
+    <Compile Include="ParserVisualizer.cs" />
+    <Compile Include="RegexExtensions.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\Success.cs" />
+    <Compile Include="Results\Unmatched.cs" />
+    <Compile Include="SelectExtensions.cs" />
+    <Compile Include="SelectManyParser.cs" />
+    <Compile Include="SequenceExtensions.cs" />
+    <Compile Include="SkipExtensions.cs" />
+    <Compile Include="StringParserExtensions.cs" />
+    <Compile Include="ThenExtensions.cs" />
+    <Compile Include="ValueTypeExtensions.cs" />
+    <Compile Include="WhereExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
