@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsnip", "Parsnip\Parsnip.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsnip.Tests", "Parsnip.Tests\Parsnip.Tests.csproj", "{FC58AF3B-0A4C-4666-976F-A4206FAF18C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsnip.Benchmarks", "Parsnip.Benchmarks\Parsnip.Benchmarks.csproj", "{9A0D1121-E7A6-416B-90B3-288A70105E5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{FC58AF3B-0A4C-4666-976F-A4206FAF18C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC58AF3B-0A4C-4666-976F-A4206FAF18C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC58AF3B-0A4C-4666-976F-A4206FAF18C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0D1121-E7A6-416B-90B3-288A70105E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0D1121-E7A6-416B-90B3-288A70105E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0D1121-E7A6-416B-90B3-288A70105E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0D1121-E7A6-416B-90B3-288A70105E5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

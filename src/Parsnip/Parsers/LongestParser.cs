@@ -4,15 +4,13 @@ namespace Parsnip.Parsers
     using Results;
 
 
-    public class LongestParser<TInput, T, TResult> :
+    public class LongestParser<TInput, TResult> :
         Parser<TInput, TResult>
     {
-        readonly Parser<TInput, T> _parser;
         readonly Parser<TInput, TResult>[] _parsers;
 
-        public LongestParser(Parser<TInput, T> parser, Parser<TInput, TResult>[] parsers)
+        public LongestParser(Parser<TInput, TResult>[] parsers)
         {
-            _parser = parser;
             _parsers = parsers;
         }
 
@@ -34,7 +32,6 @@ namespace Parsnip.Parsers
         {
             visitor.Visit(this, x =>
                 {
-                    _parser.Accept(x);
                     foreach (var parser in _parsers)
                         parser.Accept(x);
                 });

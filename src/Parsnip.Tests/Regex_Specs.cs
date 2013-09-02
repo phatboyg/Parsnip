@@ -17,7 +17,7 @@
             var parser = from x in sp.Regex(@"\d+")
                          select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 
@@ -35,7 +35,7 @@
             var parser = from x in sp.Regex(@"\d+")
                          select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsFalse(result.HasValue);
             Assert.AreEqual(0, result.Next.Offset);

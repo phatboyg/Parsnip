@@ -18,7 +18,7 @@
                                        where x == 1
                                        select x;
 
-            Result<int[], int> result = query.Parse(subject);
+            Result<int[], int> result = query.ParseArray(subject);
 
             Assert.IsTrue(result.HasValue);
             Assert.AreEqual(1, result.Value);
@@ -36,7 +36,7 @@
                                        where x != 1
                                        select x;
 
-            Result<int[], int> result = query.Parse(subject);
+            Result<int[], int> result = query.ParseArray(subject);
 
             Assert.IsFalse(result.HasValue);
         }

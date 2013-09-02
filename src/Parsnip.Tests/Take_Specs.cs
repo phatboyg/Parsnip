@@ -17,7 +17,7 @@
             Parser<int[], int[]> query = (from x in anyParser
                                           select x).Take(2);
 
-            Result<int[], int[]> result = query.Parse(subject);
+            Result<int[], int[]> result = query.ParseArray(subject);
 
             Assert.IsTrue(result.HasValue);
             Assert.AreEqual(2, result.Value.Length);

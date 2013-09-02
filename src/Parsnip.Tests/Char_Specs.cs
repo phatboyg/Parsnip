@@ -18,7 +18,7 @@
                          from value in p.String("Hello")
                          select value;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
         }
@@ -33,7 +33,7 @@
             var parser = from value in helloParser
                          select value;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsFalse(result.HasValue);
         }

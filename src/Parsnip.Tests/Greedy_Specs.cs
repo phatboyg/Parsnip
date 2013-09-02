@@ -17,7 +17,7 @@
             Parser<string, string> first = from x in p.String("Hello")
                                            select x;
 
-            Assert.IsTrue(first.Parse(subject).HasValue, "First did not match");
+            Assert.IsTrue(first.ParseString(subject).HasValue, "First did not match");
 
             Parser<string, string> second = from x in p.String("Hello")
                                             from y in p.Char(',')
@@ -25,11 +25,11 @@
                                             from z in p.String("World")
                                             select x + z;
 
-            Assert.IsTrue(second.Parse(subject).HasValue, "Second did not match");
+            Assert.IsTrue(second.ParseString(subject).HasValue, "Second did not match");
 
             Parser<string, string> parser = p.Longest(first, second);
 
-            Result<string, string> result = parser.Parse(subject);
+            Result<string, string> result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue, "Neither matched");
 
@@ -47,7 +47,7 @@
                                            from y in p.Whitespace().Then(p.String("World"))
                                            select x + y;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 
@@ -64,7 +64,7 @@
             Parser<string, string> parser = from x in p.SkipUntil(p.String("World"))
                                            select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 
@@ -81,7 +81,7 @@
             Parser<string, string> parser = from x in p.SkipUntil(p.String("World"), p.String("Wor"))
                                            select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 
@@ -98,7 +98,7 @@
             Parser<string, string> parser = from x in p.SkipUntil(p.Longest(p.String("Hello"), p.String("Hello World")))
                                            select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 
@@ -116,7 +116,7 @@
                                             from y in p.String("World")
                                            select new {x, y};
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 

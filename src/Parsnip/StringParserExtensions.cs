@@ -1,26 +1,17 @@
 ﻿namespace Parsnip
 {
     using System;
-    using Inputs;
     using Parsers;
 
 
     public static class StringParserExtensions
     {
-        public static Result<string, T> Parse<T>(this Parser<string, T> parser, string input)
-        {
-            Input<string> stringInput = new StringInput(input);
-
-            return parser.Parse(stringInput);
-        }
-
-        public static Result<char[], char> Parse(this Parser<char[], char> parser, string input)
-        {
-            Input<char[]> charInput = new ArrayInput<char>(input.ToCharArray());
-
-            return parser.Parse(charInput);
-        }
-
+        /// <summary>
+        /// Match the specified string
+        /// </summary>
+        /// <param name="parser">The parser to match</param>
+        /// <param name="constant">The string to match</param>
+        /// <returns></returns>
         public static Parser<string, string> String(this Parser<string, char> parser, string constant)
         {
             if (parser == null)
@@ -31,6 +22,13 @@
             return new ConstantStringParser(constant);
         }
 
+        /// <summary>
+        /// Match the specified string
+        /// </summary>
+        /// <param name="parser">The parser to match</param>
+        /// <param name="constant">The string to match</param>
+        /// <param name="stringComparison">The type of string comparison to perform</param>
+        /// <returns></returns>
         public static Parser<string, string> String(this Parser<string, string> parser, string constant,
             StringComparison stringComparison)
         {

@@ -17,7 +17,7 @@
             var parser = from x in sp.Chars('H', 'e', 'l', 'l', 'o').String()
                          select x;
 
-            var result = parser.Parse(subject);
+            var result = parser.ParseString(subject);
 
             Assert.IsTrue(result.HasValue);
 

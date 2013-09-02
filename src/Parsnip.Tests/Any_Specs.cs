@@ -17,7 +17,7 @@
             Parser<char[], char> query = from any in anyParser
                                          select any;
 
-            Result<char[], char> parsed = query.Parse(subject);
+            Result<char[], char> parsed = query.ParseString(subject);
 
             Assert.IsTrue(parsed.HasValue);
             Assert.AreEqual('H', parsed.Value);
@@ -35,7 +35,7 @@
             Parser<int[], int> query = from any in anyParser
                                          select any;
 
-            Result<int[], int> parsed = query.Parse(subject);
+            Result<int[], int> parsed = query.ParseArray(subject);
 
             Assert.IsTrue(parsed.HasValue);
             Assert.AreEqual(1, parsed.Value);
@@ -56,7 +56,7 @@
                                        from four in anyParser
                                        select new[] {one, two, three, four};
 
-            Result<int[], int[]> parsed = query.Parse(subject);
+            Result<int[], int[]> parsed = query.ParseArray(subject);
 
             Assert.IsTrue(parsed.HasValue);
             Assert.AreEqual(4, parsed.Value.Length);

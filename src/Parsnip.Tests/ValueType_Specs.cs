@@ -21,7 +21,7 @@
                          from c in p.Int32()
                          select new {a, b, c};
 
-            var result = parser.Parse(text);
+            var result = parser.ParseString(text);
 
             Assert.IsTrue(result.HasValue);
 
@@ -40,7 +40,7 @@
             Parser<string, int> parser = from n in p.Int32()
                                          select n;
 
-            Result<string, int> result = parser.Parse(text);
+            Result<string, int> result = parser.ParseString(text);
 
             Assert.IsTrue(result.HasValue);
 

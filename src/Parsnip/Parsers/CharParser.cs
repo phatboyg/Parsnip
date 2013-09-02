@@ -1,27 +1,32 @@
 namespace Parsnip.Parsers
 {
     using System;
-    using System.Linq.Expressions;
+    using Results;
 
 
     public class CharParser<TInput> :
         Parser<TInput, char>
     {
         readonly Parser<TInput, char> _parser;
-        readonly Expression<Func<char, bool>> _predicateExpression;
+        readonly Func<char, bool> _predicate;
 
-        public CharParser(Parser<TInput, char> parser, Expression<Func<char, bool>> predicateExpression)
+        public CharParser(Parser<TInput, char> parser, Func<char, bool> predicate)
         {
-            _predicateExpression = predicateExpression;
-
-            Func<char, bool> predicate = _predicateExpression.Compile();
-
-            _parser = from c in parser where predicate(c) select c;
+            _parser = parser;
+            _predicate = predicate;
         }
 
         public Result<TInput, char> Parse(Cursor<TInput> input)
         {
-            return _parser.Parse(input);
+            Result<TInput, char> result = _parser.Parse(input);
+            if (result.HasValue)
+            {
+                char c = result.Value;
+                if (_predicate(c))
+                    return new Success<TInput, char>(c, result.Next);
+            }
+
+            return new Unmatched<TInput, char>(input);
         }
 
         public Type ResultType

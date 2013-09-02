@@ -19,7 +19,7 @@
             var query = from hello in helloParser
                         select hello;
 
-            var parsed = query.Parse(subject);
+            var parsed = query.ParseString(subject);
 
             Assert.IsTrue(parsed.HasValue);
             Assert.AreEqual(constant, parsed.Value);

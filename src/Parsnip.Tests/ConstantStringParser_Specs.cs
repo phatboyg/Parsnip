@@ -13,7 +13,7 @@
             const string hello = "Hello";
 
             var parser = new ConstantStringParser(hello);
-            var parsed = parser.Parse("Hello, World.");
+            var parsed = parser.ParseString("Hello, World.");
 
             Assert.IsTrue(parsed.HasValue);
             Assert.AreEqual(hello, parsed.Value);
@@ -25,7 +25,7 @@
             const string hello = "Hello";
 
             var parser = new ConstantStringParser(hello);
-            var parsed = parser.Parse("Hello, World.");
+            var parsed = parser.ParseString("Hello, World.");
 
             const string world = ", World";
 

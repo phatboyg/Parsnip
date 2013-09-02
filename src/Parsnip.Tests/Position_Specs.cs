@@ -15,7 +15,7 @@
             var parser = from x in sp.String("Hello World")
                          select x;
 
-            var result = parser.Parse("Hello");
+            var result = parser.ParseString("Hello");
 
             Assert.IsFalse(result.HasValue);
             
@@ -31,7 +31,7 @@
                          from y in sp.String("World")
                          select y;
 
-            var result = parser.Parse("Hello");
+            var result = parser.ParseString("Hello");
 
             Assert.IsFalse(result.HasValue);
             
@@ -48,7 +48,7 @@
                          from y in sp.String("World")
                          select y;
 
-            var result = parser.Parse("Hello\t W0rld");
+            var result = parser.ParseString("Hello\t W0rld");
 
             Assert.IsFalse(result.HasValue);
             

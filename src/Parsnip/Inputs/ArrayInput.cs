@@ -44,5 +44,10 @@
             cursor = default(Cursor<T[]>);
             return false;
         }
+
+        bool Input<T[]>.CanGet(int offset, int count)
+        {
+            return offset + count <= _start.Count;
+        }
     }
 }

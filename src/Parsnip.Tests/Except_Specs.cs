@@ -17,7 +17,7 @@
             var parser = from x in intParser.Except(from y in intParser where y == 1 select y)
                          select x;
 
-            var result = parser.Parse(values);
+            var result = parser.ParseArray(values);
 
             Assert.IsFalse(result.HasValue);
         }
@@ -32,7 +32,7 @@
             var parser = from x in intParser.Except(from y in intParser where y == 1 select y)
                          select x;
 
-            var result = parser.Parse(values);
+            var result = parser.ParseArray(values);
 
             Assert.IsTrue(result.HasValue);
         }

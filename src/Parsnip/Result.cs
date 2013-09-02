@@ -8,17 +8,18 @@
     public interface Result<TInput, out TResult>
     {
         /// <summary>
-        /// True if the result has a value
+        /// True if the result has a value, otherwise false
         /// </summary>
         bool HasValue { get; }
         
         /// <summary>
-        /// The value of the result
+        /// The value of the result, if the HasValue property is true
         /// </summary>
         TResult Value { get; }
 
         /// <summary>
-        /// The next position after the result (or before if the parser was not matched)
+        /// The position after the matched parser, otherwise, the position up to which the parser did match
+        /// if a partial match was found.
         /// </summary>
         Cursor<TInput> Next { get; }
     }

@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcceptParserVisitor.cs" />
-    <Compile Include="ArrayParserExtensions.cs" />
+    <Compile Include="InputExtensions.cs" />
     <Compile Include="CharExtensions.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="CursorExtensions.cs" />
@@ -48,8 +48,13 @@
     <Compile Include="Inputs\StringCursor.cs" />
     <Compile Include="Inputs\StringInput.cs" />
     <Compile Include="LongestExtensions.cs" />
+    <Compile Include="ModelInfo\ModelInfoProvider.cs" />
+    <Compile Include="ModelInfo\PropertyModelInfo.cs" />
+    <Compile Include="ModelInfo\PropertyModelInfoImpl.cs" />
     <Compile Include="Parsers\AnyParser.cs" />
     <Compile Include="Parsers\CharArrayParser.cs" />
+    <Compile Include="Parsers\CharFromArrayParser.cs" />
+    <Compile Include="Parsers\CharFromStringParser.cs" />
     <Compile Include="Parsers\CharParser.cs" />
     <Compile Include="Parsers\CharToStringParser.cs" />
     <Compile Include="Parsers\ConstantStringParser.cs" />
@@ -58,9 +63,11 @@
     <Compile Include="Parsers\LongestParser.cs" />
     <Compile Include="Parsers\OneParser.cs" />
     <Compile Include="Parsers\OrParser.cs" />
+    <Compile Include="Parsers\PeekParser.cs" />
     <Compile Include="Parsers\RegexParser.cs" />
     <Compile Include="Parsers\SelectParser.cs" />
     <Compile Include="Parsers\SeriesParser.cs" />
+    <Compile Include="Parsers\SplitWithTerminatorParser.cs" />
     <Compile Include="Parsers\StringParser.cs" />
     <Compile Include="Parsers\TakeParser.cs" />
     <Compile Include="Parsers\ThenParser.cs" />
@@ -69,6 +76,7 @@
     <Compile Include="Parsers\WhereParser.cs" />
     <Compile Include="ParserVisitor.cs" />
     <Compile Include="ParserVisualizer.cs" />
+    <Compile Include="PeekExtensions.cs" />
     <Compile Include="RegexExtensions.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Parser.cs" />
@@ -77,6 +85,7 @@
     <Compile Include="Results\Unmatched.cs" />
     <Compile Include="SelectExtensions.cs" />
     <Compile Include="SelectManyParser.cs" />
+    <Compile Include="SplitExtensions.cs" />
     <Compile Include="SequenceExtensions.cs" />
     <Compile Include="SkipExtensions.cs" />
     <Compile Include="StringParserExtensions.cs" />

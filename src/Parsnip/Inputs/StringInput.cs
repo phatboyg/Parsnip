@@ -52,5 +52,10 @@ namespace Parsnip.Inputs
             cursor = default(Cursor<string>);
             return false;
         }
+
+        public bool CanGet(int offset, int count)
+        {
+            return offset + count <= _start.Count;
+        }
     }
 }
