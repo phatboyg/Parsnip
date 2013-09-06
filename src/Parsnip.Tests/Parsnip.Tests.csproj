@@ -44,6 +44,7 @@
     <Compile Include="Csv_Specs.cs" />
     <Compile Include="Except_Specs.cs" />
     <Compile Include="Greedy_Specs.cs" />
+    <Compile Include="Match_Specs.cs" />
     <Compile Include="Peek_Specs.cs" />
     <Compile Include="Position_Specs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

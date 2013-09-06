@@ -81,8 +81,8 @@
         /// <returns>The character parser</returns>
         public static Parser<string, char> Char(this Parser<string, char> parser, params char[] chars)
         {
-            if (parser == null)
-                throw new ArgumentNullException("parser");
+            if (chars.Length == 0)
+                return new CharFromStringParser(x => true);
 
             List<char> allowed = chars.ToList();
 
@@ -98,8 +98,8 @@
         /// <returns>The character parser</returns>
         public static Parser<char[], char> Char(this Parser<char[], char> parser, params char[] chars)
         {
-            if (parser == null)
-                throw new ArgumentNullException("parser");
+            if (chars.Length == 0)
+                return new CharFromArrayParser(x => true);
 
             List<char> allowed = chars.ToList();
 
@@ -119,6 +119,8 @@
                 throw new ArgumentNullException("parser");
 
             List<char> allowed = chars.ToList();
+            if (allowed.Count == 0)
+                throw new ArgumentException("At least one character must be specified");
 
             return new CharParser<TInput>(parser, c => allowed.Contains(c));
         }
@@ -132,6 +134,9 @@
         /// <returns>The character parser</returns>
         public static Parser<TInput, char[]> Chars<TInput>(this Parser<TInput, char> parser, params char[] chars)
         {
+            if (chars.Length == 0)
+                throw new ArgumentException("At least one character must be specified");
+
             if (parser == null)
                 throw new ArgumentNullException("parser");
 
@@ -153,22 +158,30 @@
             return new CharArrayParser<TInput>(parser, chars.ToCharArray());
         }
 
-        public static Parser<TInput, char[]> Whitespace<TInput>(this Parser<TInput, char> parser)
+        public static Parser<TInput, char> Whitespace<TInput>(this Parser<TInput, char> parser)
         {
             if (parser == null)
                 throw new ArgumentNullException("parser");
 
-            return parser.Char(' ').Or(parser.Char('\t').Or(parser.Char('\r').Or(parser.Char('\n'))))
+            return parser.Char(' ', '\t', '\r', '\n', '\x000C', '\x000B', '\x00A0', '\xFEFF');
+        }
+
+        public static Parser<TInput, char[]> SkipWhitespace<TInput>(this Parser<TInput, char> parser)
+        {
+            if (parser == null)
+                throw new ArgumentNullException("parser");
+
+            return parser.Char(' ', '\t', '\r', '\n', '\x000C', '\x000B', '\x00A0', '\xFEFF')
                          .ZeroOrMore();
         }
 
-        public static Parser<TInput, char[]> NewLine<TInput>(this Parser<TInput, char> parser)
+        public static Parser<TInput, char> NewLine<TInput>(this Parser<TInput, char> parser)
         {
             if (parser == null)
                 throw new ArgumentNullException("parser");
 
-            return parser.Chars('\r', '\n')
-                         .Or(parser.Char('\r').One().Or(parser.Char('\n').One()));
+            return parser.Char('\r').FirstOrDefault().Char('\n').Or(
+                parser.Char('\x2028').Or(parser.Char('\x2029')));
         }
 
         public static Parser<string, char[]> NewLine(this Parser<string, char> parser)

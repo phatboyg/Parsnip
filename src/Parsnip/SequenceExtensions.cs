@@ -40,6 +40,17 @@
         }
 
         /// <summary>
+        /// Returns one match or the default value if not matched
+        /// </summary>
+        public static Parser<TInput, T> FirstOrDefault<TInput, T>(this Parser<TInput, T> parser, T defaultValue = default(T))
+        {
+            if (parser == null)
+                throw new ArgumentNullException("parser");
+
+            return new FirstOrDefaultParser<TInput, T>(parser, defaultValue);
+        }
+
+        /// <summary>
         /// Take exactly the number of elements specified from the document starting from the current position of the cursor.
         /// </summary>
         public static Parser<TInput, T[]> Take<TInput, T>(this Parser<TInput, T> parser, int count)

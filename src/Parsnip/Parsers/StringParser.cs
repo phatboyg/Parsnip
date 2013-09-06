@@ -9,7 +9,7 @@ namespace Parsnip.Parsers
     {
         public Result<string, char> Parse(Cursor<string> input)
         {
-            if (input.Count > 0)
+            if (input.Count > input.Offset)
                 return new Success<string, char>(input.Data[input.Offset], input.Skip(1));
 
             return new Unmatched<string, char>(input);

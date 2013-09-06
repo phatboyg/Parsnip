@@ -1,5 +1,9 @@
 ﻿namespace Parsnip.Inputs
 {
+    using System.Diagnostics;
+
+
+    [DebuggerDisplay("{DebugDisplay}")]
     public class ArrayInput<T> :
         Input<T[]>
     {
@@ -11,6 +15,11 @@
             _data = data ?? new T[0];
 
             _start = new ArrayCursor<T>(this, 0, _data.Length);
+        }
+
+        protected string DebugDisplay
+        {
+            get { return string.Format("{0}<{1}>: Count = {2}", typeof(ArrayInput<>).Name, typeof(T).Name, _start.Count); }
         }
 
         int Cursor<T[]>.Offset

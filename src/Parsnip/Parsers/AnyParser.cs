@@ -9,7 +9,7 @@
     {
         public Result<TResult[], TResult> Parse(Cursor<TResult[]> input)
         {
-            if (input.Count > 0)
+            if (input.Count > input.Offset)
                 return new Success<TResult[], TResult>(input.Data[input.Offset], input.Skip(1));
 
             return new Unmatched<TResult[], TResult>(input);
